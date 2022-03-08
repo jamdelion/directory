@@ -1,7 +1,8 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import ProfileCard from '../components/ProfileCard'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import ProfileCard from "../components/ProfileCard";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -13,16 +14,15 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          FAC Directory
-        </h1>
+        <h1 className={styles.title}>FAC Directory</h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
 
-        <ProfileCard/>
+        <ProfileCard />
+
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -45,10 +45,15 @@ export default function Home() {
             className={styles.card}
           >
             <h2>Deploy &rarr;</h2>
-            <p>
-            </p>
+            <p></p>
           </a>
         </div>
+        <Link href="/people/Jo">
+          <a>Go to Jo profile</a>
+        </Link>
+        <Link href="/cohorts/fac21">
+          <a>Go to FAC21 profile</a>
+        </Link>
       </main>
 
       <footer className={styles.footer}>
@@ -57,12 +62,12 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }
