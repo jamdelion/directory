@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import ProfileCard from "../../components/ProfileCard";
 import styles from "../../styles/Home.module.css";
 import Link from "next/link";
-import utilStyles from '../../styles/utils.modules.css'
 
 const Person = () => {
   const router = useRouter();

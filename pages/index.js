@@ -4,20 +4,19 @@ import styles from "../styles/Home.module.css";
 import ProfileCard from "../components/ProfileCard";
 import Link from "next/link";
 import { supabase } from "../database/supabaseClient";
+import FacesLine from "../components/FacesLine";
 
 export async function getStaticProps() {
-  const data = await supabase.from('people'). select('*')
+  const data = await supabase.from("people").select("*");
   console.log("data", data);
   return {
     props: {
-      people: data.data
-    }
-  }
+      people: data.data,
+    },
+  };
 }
 
-export default function Home({people}) {
-
-
+export default function Home({ people }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -30,13 +29,18 @@ export default function Home({people}) {
         <h1 className={styles.title}>FAC Directory</h1>
 
         <p className={styles.description}>
-          Get started by editing{" "}
+          <input placeholder="Search..." />
           <code className={styles.code}>pages/index.js</code>
         </p>
 
-          <p>{people.map((x)=><p>{x.github}</p>)}</p>
+        {/* <p>
+          {people.map((x) => (
+            <p>{x.github}</p>
+          ))}
+        </p> */}
 
-        
+        <FacesLine people={people}/>
+
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
@@ -44,13 +48,6 @@ export default function Home({people}) {
 
           <a href="https://nextjs.org/learn" className={styles.card}>
             <h2>Learn &rarr;</h2>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
           </a>
 
           <a
