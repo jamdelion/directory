@@ -3,8 +3,21 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import ProfileCard from "../components/ProfileCard";
 import Link from "next/link";
+import { supabase } from "../database/supabaseClient";
 
-export default function Home() {
+export async function getStaticProps() {
+  const data = await supabase.from('people'). select('*')
+  console.log("hi", data)
+  return {
+    props: {
+      people: data.data
+    }
+  }
+}
+
+export default function Home(props) {
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -20,6 +33,8 @@ export default function Home() {
           Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
+
+          <p>{Object.keys(props.people).map(x=><span key={x}>{x}</span>)}</p>
 
         
         <div className={styles.grid}>
