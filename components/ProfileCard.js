@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import Image from "next/image";
+import utilStyles from '../styles/utils.module.css'
+
 
 const StyledContainer = styled.div`
     width: 80%;
@@ -20,15 +23,17 @@ const ProfilePic = styled.div`
     margin: 2rem;
 `
 
-export default function ProfileCard({}) {
+export default function ProfileCard({name}) {
 
     return (
         <StyledContainer>
             {/* Profile pic */}
-            <ProfilePic/>
+            <ProfilePic>
+                <Image src="/images/vercel.svg" height={'100%'} width={'100%'} alt="placeholder"/>
+            </ProfilePic>
             
             {/* Name */}
-            <p>Fake Name</p>
+            <p>{name}</p>
             {/* Cohort */}
             <p>FAC 21</p>
 
