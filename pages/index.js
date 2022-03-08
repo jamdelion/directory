@@ -7,7 +7,7 @@ import { supabase } from "../database/supabaseClient";
 
 export async function getStaticProps() {
   const data = await supabase.from('people'). select('*')
-  console.log("hi", data)
+  console.log("data", data);
   return {
     props: {
       people: data.data
@@ -15,7 +15,7 @@ export async function getStaticProps() {
   }
 }
 
-export default function Home(props) {
+export default function Home({people}) {
 
 
   return (
@@ -34,7 +34,7 @@ export default function Home(props) {
           <code className={styles.code}>pages/index.js</code>
         </p>
 
-          <p>{Object.keys(props.people).map(x=><span key={x}>{x}</span>)}</p>
+          <p>{people.map((x)=><p>{x.github}</p>)}</p>
 
         
         <div className={styles.grid}>
