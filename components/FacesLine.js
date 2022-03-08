@@ -1,19 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import Image from "next/image";
-import utilStyles from '../styles/utils.module.css'
-import { supabase } from "../database/supabaseClient";
 import Face from "./Face";
-
-// export async function getStaticProps() {
-//     const data = await supabase.from("people").select("*");
-//     console.log("data", data.data);
-//     return {
-//       props: {
-//         people: data.data,
-//       },
-//     };
-//   }
 
 const StyledFacesContainer = styled.div`
     display: flex;
