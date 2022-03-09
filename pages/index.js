@@ -8,7 +8,6 @@ import FacesLine from "../components/FacesLine";
 
 export async function getStaticProps() {
   const data = await supabase.from("people").select("*");
-  console.log("data", data);
   return {
     props: {
       people: data.data,

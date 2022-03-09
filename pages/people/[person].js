@@ -3,16 +3,10 @@ import ProfileCard from "../../components/ProfileCard";
 import styles from "../../styles/Home.module.css";
 import Link from "next/link";
 import { supabase } from "../../database/supabaseClient";
+import { getGithubNames } from "../../database/model";
 
 export async function getStaticPaths() {
-  // get all github names from database?
-  const paths = [
-    {
-      params: {
-        person: "jamdelion", // this should be a variable/dynamic
-      },
-    },
-  ];
+  const paths = await getGithubNames();
   return {
     paths,
     fallback: false,
@@ -20,6 +14,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+
+  // do a promise.all here to get github api data too
+
   const { data, error, status } = await supabase
     .from("people")
     .select("*")
@@ -41,8 +38,7 @@ const Person = ({ data }) => {
 
   return (
     <div className={styles.main}>
-      {/* <ProfileCard name={person} /> */}
-      <ProfileCard name={data.name} cohort={data.cohort}/>
+      <ProfileCard name={data.name} cohort={data.cohort} bio={data.bio}/>
       <p>Person Profile: {person}</p>
       <Link href="/">
         <a>Back to home</a>

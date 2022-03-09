@@ -25,7 +25,7 @@ const ProfilePic = styled.div`
 
 // fetch github image from username here?
 
-export default function ProfileCard({name, cohort}) {
+export default function ProfileCard({name, cohort, bio}) {
 
     return (
         <StyledContainer>
@@ -35,9 +35,7 @@ export default function ProfileCard({name, cohort}) {
             
             <p>{name}</p>
             <p>{cohort}</p>
-
-            {/* Short description */}
-            <p>Lorem ipsum grinder skate gnarly kickflip heel toeside</p>
+            <p>{bio}</p>
 
             {/* Timeline */}
 
