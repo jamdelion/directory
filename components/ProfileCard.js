@@ -15,27 +15,17 @@ const StyledContainer = styled.div`
     align-items: center;
 `;
 
-const ProfilePic = styled.div`
-    border: solid 1px black;
-    border-radius: 100%;
-    width: 200px;
-    height: 200px;
-    margin: 2rem;
-`
-
-// fetch github image from username here?
-
-export default function ProfileCard({name, cohort, bio, avatar}) {
+// export default function ProfileCard({name, cohort, bio, avatar}) {
+    export default function ProfileCard({data}) {
+        console.log("DATA", data)
 
     return (
         <StyledContainer>
-            <ProfilePic>
-                <Image src={avatar} height={'100%'} width={'100%'} alt="placeholder"/>
-            </ProfilePic>
+            <Image src={data.githubData.avatar_url} height={'160'} width={'160'} alt="placeholder"/>
             
-            <p>{name}</p>
-            <p>{cohort}</p>
-            <p>{bio}</p>
+            <p>{data.databaseData.name}</p>
+            <p>{data.databaseData.cohort}</p>
+            <p>{data.databaseData.bio}</p>
 
             {/* Timeline */}
 

@@ -43,7 +43,8 @@ const Person = ({ githubData, databaseData }) => {
 
   return (
     <div className={styles.main}>
-      <ProfileCard name={databaseData.name} cohort={databaseData.cohort} bio={databaseData.bio} avatar={githubData.avatar_url} />
+      {/* <ProfileCard name={databaseData.name} cohort={databaseData.cohort} bio={databaseData.bio} avatar={githubData.avatar_url} /> */}
+      <ProfileCard data={{githubData, databaseData}} />
       <p>Person Profile: {person}</p>
       <Link href="/">
         <a>Back to home</a>
