@@ -25,12 +25,12 @@ const ProfilePic = styled.div`
 
 // fetch github image from username here?
 
-export default function ProfileCard({name, cohort, bio}) {
+export default function ProfileCard({name, cohort, bio, avatar}) {
 
     return (
         <StyledContainer>
             <ProfilePic>
-                <Image src="/images/vercel.svg" height={'100%'} width={'100%'} alt="placeholder"/>
+                <Image src={avatar} height={'100%'} width={'100%'} alt="placeholder"/>
             </ProfilePic>
             
             <p>{name}</p>

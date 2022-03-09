@@ -3,7 +3,7 @@ import ProfileCard from "../../components/ProfileCard";
 import styles from "../../styles/Home.module.css";
 import Link from "next/link";
 import { supabase } from "../../database/supabaseClient";
-import { getGithubNames } from "../../database/model";
+import { getDataForOnePerson, getGithubNames , fetchFromGithubApi} from "../../database/model";
 
 export async function getStaticPaths() {
   const paths = await getGithubNames();
@@ -15,30 +15,35 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
 
-  // do a promise.all here to get github api data too
+  return await Promise.all([
+    fetchFromGithubApi(params.person),
+    getDataForOnePerson(params.person),
+  ])
+    .then((data) => {
+      const githubData = data[0];
+      const databaseData = data[1];
+      return {
+        props: {
+          githubData,
+          databaseData
+        },
+       };
 
-  const { data, error, status } = await supabase
-    .from("people")
-    .select("*")
-    .eq("github", params.person)
-    .single();
-  if (error && status !== 406) {
-    throw error;
-  }
-  return {
-    props: {
-      data,
-    },
-  };
+
+    })
+    .catch((error) => console.log("Error: ", error));
 }
 
-const Person = ({ data }) => {
+const Person = ({ githubData, databaseData }) => {
   const router = useRouter();
   const { person } = router.query;
 
+  console.log("databaseData", databaseData)
+  console.log("githubData", githubData)
+
   return (
     <div className={styles.main}>
-      <ProfileCard name={data.name} cohort={data.cohort} bio={data.bio}/>
+      <ProfileCard name={databaseData.name} cohort={databaseData.cohort} bio={databaseData.bio} avatar={githubData.avatar_url} />
       <p>Person Profile: {person}</p>
       <Link href="/">
         <a>Back to home</a>
