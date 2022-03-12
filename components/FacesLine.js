@@ -25,7 +25,7 @@ export default function FacesLine({people}) {
             
         <StyledFacesContainer>
           {people.map((x) => (
-            <Face name={x.name} github={x.github}/>
+            <Face name={x.name} key={x.name} github={x.github}/>
           ))}
         </StyledFacesContainer>
     

@@ -32,12 +32,6 @@ export default function Home({ people }) {
           <code className={styles.code}>pages/index.js</code>
         </p>
 
-        {/* <p>
-          {people.map((x) => (
-            <p>{x.github}</p>
-          ))}
-        </p> */}
-
         <FacesLine people={people}/>
 
         <div className={styles.grid}>
