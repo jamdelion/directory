@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import utilStyles from '../styles/utils.module.css'
+import SocialIcons from "./SocialIcons";
 
 
 const StyledContainer = styled.div`
@@ -15,23 +16,21 @@ const StyledContainer = styled.div`
     align-items: center;
 `;
 
-// export default function ProfileCard({name, cohort, bio, avatar}) {
-    export default function ProfileCard({data}) {
-        console.log("DATA", data)
+    export default function ProfileCard({ api, db}) {
 
     return (
         <StyledContainer>
-            <Image src={data.githubData.avatar_url} height={'160'} width={'160'} alt="placeholder"/>
+            <Image src={api.avatar_url} height={'160'} width={'160'} alt="placeholder"/>
             
-            <p>{data.databaseData.name}</p>
-            <p>{data.databaseData.cohort}</p>
-            <p>{data.databaseData.bio}</p>
+            <p>{db.name}</p>
+            <p>{db.cohort}</p>
+            <p>{db.bio}</p>
 
             {/* Timeline */}
 
             {/* Contact details button */}
 
-            {/* Social icons */}
+            <SocialIcons db={db}/>
         </StyledContainer>
     )
 
