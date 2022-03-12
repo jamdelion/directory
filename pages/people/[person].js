@@ -44,6 +44,7 @@ const Person = ({ githubData, databaseData }) => {
   return (
     <div className={styles.main}>
       <ProfileCard api={githubData} db={databaseData}/>
+      {/* <Connections> */}
       <p>Person Profile: {person}</p>
       <Link href="/">
         <a>Back to home</a>
