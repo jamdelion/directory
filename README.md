@@ -1,10 +1,13 @@
+# FAC Directory
+
 ## To do:
 
-- [] Search bar
-- [] Fix cohort pages (props, fetching data)
-- [] Timeline component
-- [] Connections
+- [ ] Search bar
+- [ ] Fix cohort pages (props, fetching data)
+- [ ] Timeline component
+- [ ] Connections
 
+---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
