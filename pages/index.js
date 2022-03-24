@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import ProfileCard from "../components/ProfileCard";
 import Link from "next/link";
 import { supabase } from "../database/supabaseClient";
 import FacesLine from "../components/FacesLine";
@@ -51,7 +50,7 @@ export default function Home({ people }) {
             <p></p>
           </a>
         </div>
-        <Link href="/people/Jo">
+        <Link href="/people/jamdelion">
           <a>Go to Jo profile</a>
         </Link>
         <Link href="/cohorts/fac21">

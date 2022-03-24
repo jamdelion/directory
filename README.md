@@ -3,7 +3,7 @@
 ## To do:
 
 - [ ] Search bar
-- [ ] Fix cohort pages (props, fetching data)
+- [ ] Form to write data to tables
 - [ ] Timeline component
 - [ ] Connections
 

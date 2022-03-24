@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import ProfileCard from "../../components/ProfileCard";
+import UserProfileCard from "../../components/UserProfileCard";
 import styles from "../../styles/Home.module.css";
 import Link from "next/link";
 import { supabase } from "../../database/supabaseClient";
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
 
   return await Promise.all([
-    fetchFromGithubApi(params.person),
+    fetchFromGithubApi(params.person, 'user'),
     getDataForOnePerson(params.person),
   ])
     .then((data) => {
@@ -43,7 +43,7 @@ const Person = ({ githubData, databaseData }) => {
 
   return (
     <div className={styles.main}>
-      <ProfileCard api={githubData} db={databaseData}/>
+      <UserProfileCard api={githubData} db={databaseData}/>
       {/* <Connections> */}
       <p>Person Profile: {person}</p>
       <Link href="/">

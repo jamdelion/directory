@@ -18,8 +18,26 @@ export async function getGithubNames() {
   });
 }
 
-export async function fetchFromGithubApi(username) {
-  return await fetch(`https://api.github.com/users/${username}`)
+export async function getCohorts() {
+  const { data, error, status } = await supabase
+    .from("cohorts")
+    .select("github");
+
+  if (error && status !== 406) {
+    throw error;
+  }
+
+  return data.map((cohort) => {
+    return {
+      params: {
+        cohort: cohort.github,
+      },
+    };
+  });
+}
+
+export async function fetchFromGithubApi(username, type) {
+  return await fetch(`https://api.github.com/${type}s/${username}`)
     .then((res) => res.json())
     .catch((error) => console.log(error));
 }
@@ -34,4 +52,16 @@ export async function getDataForOnePerson(username) {
     throw error;
   }
   return data;
+}
+
+export async function getDataForCohort(name) {
+  const { data, error, status } = await supabase
+  .from("cohorts")
+  .select("*")
+  .eq("github", name)
+  .single();
+if (error && status !== 406) {
+  throw error;
+}
+return data;
 }

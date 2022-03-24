@@ -16,7 +16,7 @@ const StyledContainer = styled.div`
     align-items: center;
 `;
 
-    export default function ProfileCard({ api, db}) {
+    export default function UserProfileCard({ api, db}) {
 
     return (
         <StyledContainer>
