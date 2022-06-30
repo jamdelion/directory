@@ -7,10 +7,10 @@ import { faBrowser } from "@fortawesome/free-solid-svg-icons";
 
 export default function SocialIcons({ db }) {
   const githubUrl = `https://www.github.com/${db.github}`;
-  const devtoUrl = `https://dev.to/${db.socials.devto}`;
-  const linkedinUrl = `https://www.linkedin.com/in/${db.socials.linkedin}`;
-  const hashnodeUrl = `https://${db.socials.hashnode}.hashnode.dev`;
-  const websiteUrl = `${db.socials.website}`;
+  const devtoUrl = `https://dev.to/${db.socials?.devto}`;
+  const linkedinUrl = `https://www.linkedin.com/in/${db.socials?.linkedin}`;
+  const hashnodeUrl = `https://${db.socials?.hashnode}.hashnode.dev`;
+  const websiteUrl = `${db.socials?.website}`;
 
   return (
     <div className={styles.grid}>
@@ -20,25 +20,25 @@ export default function SocialIcons({ db }) {
         </a>
       )}
 
-      {db.socials.devto && (
+      {db.socials?.devto && (
         <a href={devtoUrl}>
           <FontAwesomeIcon icon={faDev} size="3x" />
         </a>
       )}
 
-      {db.socials.linkedin && (
+      {db.socials?.linkedin && (
         <a href={linkedinUrl}>
           <FontAwesomeIcon icon={faLinkedin} size="3x" />
         </a>
       )}
 
-      {db.socials.hashnode && (
+      {db.socials?.hashnode && (
         <a href={hashnodeUrl}>
           <FontAwesomeIcon icon={faHashnode} size="3x" />
         </a>
       )}
 
-      {db.socials.website && (
+      {db.socials?.website && (
         <a href={websiteUrl}>
           <FontAwesomeIcon icon={faBrowser} size="3x" />
         </a>

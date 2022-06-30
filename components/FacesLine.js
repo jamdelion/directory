@@ -18,6 +18,10 @@ const StyledFacesContainer = styled.div`
 
 export default function FacesLine({people}) {
 
+  console.log("PEOPLE", people)
+
+  // needs to randomly show first few faces and be expandable to show the others
+
     return (
         <StyledLineContainer>
             <div style={{alignSelf: 'flex-start'}}><p>I am the groupTitle</p></div>

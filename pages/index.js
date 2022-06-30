@@ -27,9 +27,11 @@ export default function Home({ people }) {
         <h1 className={styles.title}>FAC Directory</h1>
 
         <p className={styles.description}>
-          <input placeholder="Search..." />
-          <code className={styles.code}>pages/index.js</code>
+          <input placeholder="FAC22" />
+          <code className={styles.code}>Search for a cohort/name...</code>
         </p>
+
+        {/* for a few (or all??) cohorts, show a sample of faces, i.e. one line each */}
 
         <FacesLine people={people}/>
 
@@ -42,13 +44,6 @@ export default function Home({ people }) {
             <h2>Learn &rarr;</h2>
           </a>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p></p>
-          </a>
         </div>
         <Link href="/people/jamdelion">
           <a>Go to Jo profile</a>
