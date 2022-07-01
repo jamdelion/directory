@@ -29,10 +29,15 @@ export default function Home({ people, cohorts }) {
       <main className={styles.main}>
         <h1 className={styles.title}>FAC Directory</h1>
 
+        <Link href="/add">
+          <a style={{margin: "2rem"}}>+ Add FAC member</a>
+        </Link>
+
         <p className={styles.description}>
           <input placeholder="FAC22" />
           <code className={styles.code}>Search for a cohort/name...</code>
         </p>
+
 
         {/* for a few (or all??) cohorts, show a sample of faces, i.e. one line each */}
 

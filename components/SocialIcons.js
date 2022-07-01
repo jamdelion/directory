@@ -17,6 +17,10 @@ const IconsContainer = styled.div`
   padding: 1rem;
 `;
 
+const Icon = styled.a`
+  max-width: 70px;
+`;
+
 export default function SocialIcons({ db }) {
   const githubUrl = `https://www.github.com/${db.github}`;
   const devtoUrl = `https://dev.to/${db.socials?.devto}`;
@@ -27,33 +31,33 @@ export default function SocialIcons({ db }) {
   return (
     <IconsContainer>
       {db.github && (
-        <a href={githubUrl}>
+        <Icon href={githubUrl}>
           <FontAwesomeIcon icon={faGithub} size="3x" />
-        </a>
+        </Icon>
       )}
 
       {db.socials?.devto && (
-        <a href={devtoUrl}>
+        <Icon href={devtoUrl}>
           <FontAwesomeIcon icon={faDev} size="3x" />
-        </a>
+        </Icon>
       )}
 
       {db.socials?.linkedin && (
-        <a href={linkedinUrl}>
+        <Icon href={linkedinUrl}>
           <FontAwesomeIcon icon={faLinkedin} size="3x" />
-        </a>
+        </Icon>
       )}
 
       {db.socials?.hashnode && (
-        <a href={hashnodeUrl}>
+        <Icon href={hashnodeUrl}>
           <FontAwesomeIcon icon={faHashnode} size="3x" />
-        </a>
+        </Icon>
       )}
 
       {db.socials?.website && (
-        <a href={websiteUrl}>
+        <Icon href={websiteUrl}>
           <FontAwesomeIcon icon={faBrowser} size="3x" />
-        </a>
+        </Icon>
       )}
     </IconsContainer>
   );
