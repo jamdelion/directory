@@ -6,15 +6,18 @@ import { supabase } from "../database/supabaseClient";
 import FacesLine from "../components/FacesLine";
 
 export async function getStaticProps() {
-  const data = await supabase.from("people").select("*");
+  const peopleData = await supabase.from("people").select("*");
+  const cohortData = await supabase.from("cohorts").select("*");
+
   return {
     props: {
-      people: data.data,
+      people: peopleData.data,
+      cohorts: cohortData.data
     },
   };
 }
 
-export default function Home({ people }) {
+export default function Home({ people, cohorts }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -33,7 +36,11 @@ export default function Home({ people }) {
 
         {/* for a few (or all??) cohorts, show a sample of faces, i.e. one line each */}
 
-        <FacesLine people={people}/>
+        {cohorts.map(c => {
+          return (
+            <FacesLine key={c.id} cohort={c.name} people={people.filter(p => p.cohort === c.name)}/>
+          )
+        })}
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>

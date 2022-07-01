@@ -16,15 +16,15 @@ const StyledFacesContainer = styled.div`
     flex-direction: column;
 `;
 
-export default function FacesLine({people}) {
+export default function FacesLine({people, cohort}) {
 
-  console.log("PEOPLE", people)
+  // console.log("PEOPLE", people)
 
   // needs to randomly show first few faces and be expandable to show the others
 
     return (
         <StyledLineContainer>
-            <div style={{alignSelf: 'flex-start'}}><p>I am the groupTitle</p></div>
+            <div style={{alignSelf: 'flex-start'}}><p>{cohort}</p></div>
             <button style={{alignSelf: "flex-end"}}>Expand</button>
             
         <StyledFacesContainer>

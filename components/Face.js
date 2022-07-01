@@ -22,6 +22,7 @@ export default function Face({name, github}) {
         <StyledContainer>
             <Link href={`/people/${github}`}>
             <a>
+                {/* <Image/> */}
             <p>{name}</p>
             <p>{github}</p>
             </a>
