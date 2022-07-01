@@ -1,9 +1,21 @@
 import React, { useEffect } from "react";
 import styles from "./../styles/Home.module.css";
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin, faDev, faHashnode } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faLinkedin,
+  faDev,
+  faHashnode,
+} from "@fortawesome/free-brands-svg-icons";
 import { faBrowser } from "@fortawesome/free-solid-svg-icons";
 
+const IconsContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  min-width: 10rem;
+  padding: 1rem;
+`;
 
 export default function SocialIcons({ db }) {
   const githubUrl = `https://www.github.com/${db.github}`;
@@ -13,7 +25,7 @@ export default function SocialIcons({ db }) {
   const websiteUrl = `${db.socials?.website}`;
 
   return (
-    <div className={styles.grid}>
+    <IconsContainer>
       {db.github && (
         <a href={githubUrl}>
           <FontAwesomeIcon icon={faGithub} size="3x" />
@@ -43,6 +55,6 @@ export default function SocialIcons({ db }) {
           <FontAwesomeIcon icon={faBrowser} size="3x" />
         </a>
       )}
-    </div>
+    </IconsContainer>
   );
 }

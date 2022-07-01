@@ -36,9 +36,9 @@ export default function Home({ people, cohorts }) {
 
         {/* for a few (or all??) cohorts, show a sample of faces, i.e. one line each */}
 
-        {cohorts.map(c => {
+        {cohorts.map(cohort => {
           return (
-            <FacesLine key={c.id} cohort={c.name} people={people.filter(p => p.cohort === c.name)}/>
+            <FacesLine key={cohort.id} title={cohort.name} people={people.filter(p => p.cohort === cohort.name)}/>
           )
         })}
 
