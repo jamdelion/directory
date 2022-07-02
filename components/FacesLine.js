@@ -17,7 +17,7 @@ const StyledLineContainer = styled.div`
   margin-bottom: 2rem;
 `;
 
-export default function FacesLine({ people, title }) {
+export default function FacesLine({ session, people, title }) {
   // console.log("PEOPLE", people)
 
   // needs to randomly show first few faces and be expandable to show the others
@@ -31,7 +31,7 @@ export default function FacesLine({ people, title }) {
 
       <StyledFacesContainer>
         {people.map((x) => (
-          <Face name={x.name} key={x.name} github={x.github} />
+          <Face session={session} name={x.name} key={x.name} github={x.github} />
         ))}
       </StyledFacesContainer>
     </StyledLineContainer>
