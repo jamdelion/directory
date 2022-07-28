@@ -28,7 +28,7 @@ const StyledButton = styled.button`
     return (
         <StyledContainer>
             <div style={{marginTop: "2rem"}}>
-            <Image src={api.avatar_url} height={'160'} width={'160'} alt="placeholder"/>
+            <Image src={api.avatar_url || "/vercel.svg"} height={'160'} width={'160'} alt="placeholder"/>
             </div>
             
             <p className={utilStyles.headingXl}>{db.name}</p>
