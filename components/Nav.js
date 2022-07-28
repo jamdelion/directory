@@ -3,7 +3,10 @@ import styled from "styled-components";
 import { useUser } from "@auth0/nextjs-auth0";
 
 const StyledContainer = styled.div`
-  display: flex;
+  position: fixed;
+  background-color: white;
+  width: 100%;
+  z-index: 10;
 `;
 
 export default function Nav() {
@@ -20,14 +23,16 @@ export default function Nav() {
 // }
   return (
     <StyledContainer>
+        <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", width: "fit-content"}}>
       {user ? (
         <>
+          <p style={{marginRight: "1rem"}}>Hello {user?.name}!</p>
           <a href="/api/auth/logout">Logout</a>
-          <p>Hello {user?.name}!</p>
         </>
       ) : (
         <a href="/api/auth/login">Login</a>
       )}
+      </div>
     </StyledContainer>
   );
 }

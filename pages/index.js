@@ -6,6 +6,7 @@ import { supabase } from "../database/supabaseClient";
 import FacesLine from "../components/FacesLine";
 import Nav from "../components/Nav";
 import { useUser } from "@auth0/nextjs-auth0";
+import React, {useState} from "react";
 
 export async function getStaticProps() {
   const peopleData = await supabase.from("people").select("*");
@@ -21,6 +22,7 @@ export async function getStaticProps() {
 
 export default function Home({ people, cohorts }) {
   const { user, error, isLoading } = useUser();
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <div className={styles.container}>
       <Head>
@@ -47,7 +49,7 @@ export default function Home({ people, cohorts }) {
                 </Link>
 
                 <p className={styles.description}>
-                  <input placeholder="FAC22" />
+                  <input placeholder="FAC22" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
                   <code className={styles.code}>
                     Search for a cohort/name...
                   </code>
@@ -56,6 +58,7 @@ export default function Home({ people, cohorts }) {
                {/* Show up to 4 cohorts, of cohorts where there are people in the DB */}
                 {cohorts
                   .filter((c) => people.map((p) => p.cohort).includes(c.name))
+                  .filter(c => c.name.includes(searchTerm.toUpperCase()))
                   .map((cohort) => {
                     return (
                       <FacesLine
