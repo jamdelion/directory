@@ -53,29 +53,31 @@ export default function Home({ people, cohorts }) {
                   </code>
                 </p>
 
-                {/* for a few (or all??) cohorts, show a sample of faces, i.e. one line each */}
-
-                {cohorts.map((cohort) => {
-                  return (
-                    <FacesLine
-                      key={cohort.id}
-                      title={cohort.name}
-                      people={people.filter((p) => p.cohort === cohort.name)}
-                    />
-                  );
-                })}
+               {/* Show up to 4 cohorts, of cohorts where there are people in the DB */}
+                {cohorts
+                  .filter((c) => people.map((p) => p.cohort).includes(c.name))
+                  .map((cohort) => {
+                    return (
+                      <FacesLine
+                        key={cohort.id}
+                        title={cohort.name}
+                        people={people.filter((p) => p.cohort === cohort.name)}
+                      />
+                    );
+                  })
+                  .slice(0, 4)}
 
                 {/* <div className={styles.grid}> */}
-                  <Link href="/people/jamdelion">
-                    <a className={styles.card}>
-                      <h2>Go to Jo profile &rarr;</h2>
-                    </a>
-                  </Link>
-                  <Link href="/cohorts/fac21">
-                    <a className={styles.card}>
-                      <h2>Go to FAC21 profile &rarr;</h2>
-                    </a>
-                  </Link>
+                <Link href="/people/jamdelion">
+                  <a className={styles.card}>
+                    <h2>Go to Jo profile &rarr;</h2>
+                  </a>
+                </Link>
+                <Link href="/cohorts/fac21">
+                  <a className={styles.card}>
+                    <h2>Go to FAC21 profile &rarr;</h2>
+                  </a>
+                </Link>
                 {/* </div> */}
               </>
             )}

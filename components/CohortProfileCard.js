@@ -20,13 +20,13 @@ const StyledContainer = styled.div`
 
     return (
         <StyledContainer>
-            <Image src={api.avatar_url} height={'160'} width={'160'} alt="placeholder"/>
+            <Image src={api.avatar_url || '/vercel.svg'} height={'160'} width={'160'} alt="placeholder"/>
             
             <p>{db.name}</p>
             <p>{db.num_people} people</p>
             <p>{db.dates}</p>
             <p>{api.html_url}</p>
-            <p>Number of repos: {api.public_repos}</p>
+            <p>Number of repos: {api.public_repos || "Unknown"}</p>
 
             {/* Timeline */}
 
