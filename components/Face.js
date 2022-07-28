@@ -21,6 +21,7 @@ export default function Face({ name, github }) {
     avatar_url: "https://avatars.githubusercontent.com/u/31373245?v=4",
   });
 
+//   Probably need to do this earlier, currenttly it does a useEffect and fetch for every user in the facelines on the index page
   useEffect(async () => {
     await fetchFromGithubApi(github, "user").then((data) => {
       setGithubData(data);
@@ -44,7 +45,6 @@ export default function Face({ name, github }) {
             </div>
           )}
           <p>{name}</p>
-          {/* <p>{github}</p> */}
         </a>
       </Link>
     </StyledContainer>
