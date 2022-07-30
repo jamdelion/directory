@@ -70,7 +70,7 @@ export default function Home({ people, cohorts }) {
                   })
                   .slice(0, 4)}
 
-                {/* <div className={styles.grid}> */}
+                <div className={styles.grid}>
                 <Link href="/people/jamdelion">
                   <a className={styles.card}>
                     <h2>Go to Jo profile &rarr;</h2>
@@ -81,7 +81,7 @@ export default function Home({ people, cohorts }) {
                     <h2>Go to FAC21 profile &rarr;</h2>
                   </a>
                 </Link>
-                {/* </div> */}
+                </div>
               </>
             )}
           </>

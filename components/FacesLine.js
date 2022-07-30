@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Face from "./Face";
+import styles from "../styles/Home.module.css";
 
 const StyledFacesContainer = styled.div`
   display: flex;
@@ -33,14 +34,14 @@ export default function FacesLine({ people, title }) {
       </div>
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        style={{ alignSelf: "flex-end" }}
+        style={{ alignSelf: "flex-end", marginBottom: "1rem" }}
       >
         {isExpanded ? "Minimise -" : "Expand +"}
       </button>
 
-      <StyledFacesContainer>
+      <div className={styles.grid}>
         {isExpanded ? faces : faces.slice(0, 4)}
-      </StyledFacesContainer>
+      </div>
     </StyledLineContainer>
   );
 }
