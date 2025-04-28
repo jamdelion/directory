@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import Face from "./Face";
 
@@ -18,7 +18,6 @@ const StyledLineContainer = styled.div`
 `;
 
 export default function FacesLine({ people, title }) {
-  // console.log("PEOPLE", people)
 
   // needs to randomly show first few faces and be expandable to show the others
 
@@ -28,10 +27,11 @@ export default function FacesLine({ people, title }) {
         <p>{title}</p>
       </div>
       <button style={{ alignSelf: "flex-end" }}>Expand</button>
+      {/* TODO: functionality to expand  */}
 
       <StyledFacesContainer>
-        {people.map((x) => (
-          <Face name={x.name} key={x.name} github={x.github} />
+        {people.map((face) => (
+          <Face name={face.name} key={face.name} github={face.github} />
         ))}
       </StyledFacesContainer>
     </StyledLineContainer>
