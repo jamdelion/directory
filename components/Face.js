@@ -3,6 +3,12 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { fetchFromGithubApi } from "../database/model";
+import {
+    faDev,
+    faGithub,
+    faHashnode,
+    faLinkedin,
+  } from "@fortawesome/free-brands-svg-icons";
 
 const StyledContainer = styled.div`
   height: 100%;

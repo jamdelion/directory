@@ -2,8 +2,9 @@
 
 ## To do:
 
+- [ ] Convert app to Typescript
 - [ ] Search bar
-- [ ] Form to write data to tables
+- [ ] Convert form to something like Formik
 - [ ] Timeline component
 - [ ] Connections
 

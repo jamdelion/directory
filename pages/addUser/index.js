@@ -1,38 +1,16 @@
-import styles from "../styles/Home.module.css";
 import Link from "next/link";
-import { supabase } from "../database/supabaseClient";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import styled from "styled-components";
-import { useForm, Controller } from "react-hook-form";
-import ReactSelect from "react-select";
-import Select from "react-select";
-import { range } from "../utils";
+import { useForm } from "react-hook-form";
+import { supabase } from "../../database/supabaseClient";
+import styles from "../../styles/Home.module.css";
+import { range } from "../../utils";
+import { StyledButton, StyledInput } from "./styles";
 
-const StyledInput = styled.input`
-  padding: 1rem;
-  border: solid 1px;
-  font-size: 1rem;
-  margin-top: 2rem;
-`;
-
-const StyledButton = styled.button`
-  padding: 1rem;
-  border: solid 1px;
-  font-size: 1rem;
-  margin-top: 2rem;
-  width: 50%;
-  border: none;
-  border-radius: 10px;
-`;
-
-const Add = () => {
+const AddUserForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
-    reset,
-    control,
     formState: { errors },
   } = useForm();
 
@@ -51,23 +29,21 @@ const Add = () => {
     setPerson(() => ({ ...person, [e.target.name]: e.target.value }));
   };
 
-  const generateCohorts = () => {
-    const cohortArray = range(1, 29).map((num) => {
-      let obj = {};
+  // const generateCohorts = () => {
+  //   return range(1, 29).map((num) => {
+  //     const obj = {};
+  //     obj.value = `FAC${num}`;
+  //     obj.label = `FAC${num}`;
+  //     return obj;
+  //   });
+  // };
 
-      obj.value = `FAC${num}`;
-      obj.label = `FAC${num}`;
-      return obj;
-    });
-    return cohortArray;
-  };
-
-  const cohortOptions = generateCohorts();
+  // const cohortOptions = generateCohorts();
 
   const createNewPerson = async () => {
-    console.log("creating new person");
     if (!name || !github || !cohort) {
-      console.log("Unable to create new person", name, github, cohort);
+      console.error("Unable to create new person", name, github, cohort);
+      // TODO: Throw an error and show in UI
       return;
     }
     const { data } = await supabase
@@ -138,32 +114,6 @@ const Add = () => {
           <p>Not a valid FAC cohort!</p>
         )}
 
-        {/* Might be nicer as a ReactSelect6 but couldn't get it to work! */}
-
-        {/* <div>
-          <label>Cohort</label>
-          <Controller
-            name="cohort"
-            control={control}
-            render={({ onChange, value }) => (
-              <ReactSelect
-                isClearable
-                options={cohortOptions}
-                onChange={(e) => {
-                  onChange(e.value);
-                }}
-                value={{
-                  value: value,
-                  label: value,
-                }}
-                // value={cohortOptions.find(c => c.value === value)}
-                // onChange={val => onChange(val.value)}
-              />
-            )}
-          />
-          <span>{errors.cohort?.message}</span>
-        </div> */}
-
         <StyledInput
           {...register("bio", { maxLength: 350 })}
           onChange={onChange}
@@ -171,26 +121,8 @@ const Add = () => {
           placeholder="A brief bio (optional)"
           value={person.bio}
         />
-        {/* <input
-        defaultValue={intialValues.age}
-        placeholder="0"
-        type="text"
-        {...register("age", {
-          validate: {
-            positiveNumber: (value) => parseFloat(value) > 0,
-            lessThanHundred: (value) => parseFloat(value) < 200
-          }
-        })}
-      /> */}
-        {errors.age && errors.age.type === "positiveNumber" && (
-          <p>Your age is invalid</p>
-        )}
-        {errors.age && errors.age.type === "lessThanHundred" && (
-          <p>Your age should be greater than 200</p>
-        )}
 
         <StyledButton type="submit">Submit</StyledButton>
-        {/* <input type="submit" /> */}
       </form>
 
       <Link href="/">
@@ -200,4 +132,4 @@ const Add = () => {
   );
 };
 
-export default Add;
+export default AddUserForm;

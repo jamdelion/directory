@@ -29,7 +29,7 @@ export default function Home({ people, cohorts }) {
       <main className={styles.main}>
         <h1 className={styles.title}>FAC Directory</h1>
 
-        <Link href="/add">
+        <Link href="/addUser">
           <a style={{ margin: "2rem" }}>+ Add FAC member</a>
         </Link>
 
