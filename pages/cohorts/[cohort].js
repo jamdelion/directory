@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import CohortProfileCard from "../../components/CohortProfileCard";
+import CohortProfileCard from "./components/CohortProfileCard";
 import styles from "../../styles/Home.module.css";
 import Link from "next/link";
 import { supabase } from "../../database/supabaseClient";

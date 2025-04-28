@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
-import styles from "./../styles/Home.module.css";
-import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faGithub,
-  faLinkedin,
   faDev,
+  faGithub,
   faHashnode,
+  faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { faBrowser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import styled from "styled-components";
 
 const IconsContainer = styled.div`
   display: flex;
