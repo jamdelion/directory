@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 import Face from "./Face";
@@ -18,13 +19,17 @@ const StyledLineContainer = styled.div`
 `;
 
 export default function FacesLine({ people, title }) {
-
   // needs to randomly show first few faces and be expandable to show the others
 
   return (
     <StyledLineContainer>
       <div style={{ alignSelf: "flex-start" }}>
-        <p>{title}</p>
+        {/* <p>{title}</p> */}
+        <Link href={`/cohorts/${title.toLowerCase()}`}>
+          <a>
+            <p>{title}</p>
+          </a>
+        </Link>
       </div>
       <button style={{ alignSelf: "flex-end" }}>Expand</button>
       {/* TODO: functionality to expand  */}

@@ -60,7 +60,6 @@ export default function Home({ people, cohorts }) {
             <h2>Go to FAC21 profile &rarr;</h2>
           </a>
         </Link>
-        {/* </div> */}
       </main>
 
       <footer className={styles.footer}>
